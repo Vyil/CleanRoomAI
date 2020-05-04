@@ -5,7 +5,6 @@ public class Grid {
     String[][] grid = new String[20][20];
 
     public Grid(){
-
     }
 
     public boolean roomIsCleaned(){
@@ -21,7 +20,7 @@ public class Grid {
 
 
     public void printTest(){
-        for(int i=0;i<19;i++){
+        for(int i=0;i<20;i++){
             System.out.println(Arrays.deepToString(grid[i]));
         }
     }

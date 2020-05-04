@@ -24,12 +24,14 @@ public class DFSBacktrace {
 
 
     public List<Coordinate> solve(Grid grid) {
-        System.out.println("Called solve");
+
         List<Coordinate> path = new ArrayList<>();
         if (explore(grid, 0, 0, path)) {
             System.out.println("Returning path: ");
-            System.out.println("Counter = "+counter);
-            printPath(path);
+            System.out.println("Iterations done: "+counter);
+//            printPath(path);
+            System.out.println(path.size());
+//            System.out.println(countAvailableSpots(grid));
             printGrid(grid);
             return path;
         }
@@ -37,6 +39,11 @@ public class DFSBacktrace {
     }
 
     private boolean explore(Grid grid, int y, int x, List<Coordinate> path) {
+        if (grid.roomIsCleaned()) {
+            System.out.println("Room is cleaned");
+            return true;
+        }
+
         counter++;
         if (!grid.isValidMove(y, x) || grid.isBlocked(y, x) || grid.isCleaned(y, x)) {
             return false;
@@ -44,11 +51,6 @@ public class DFSBacktrace {
 
         path.add(new Coordinate(y, x));
         grid.setCleaned(y, x);
-
-        if (grid.roomIsCleaned()) {
-            System.out.println("Room is cleaned");
-            return true;
-        }
 
         for (int[] direction : DIRECTIONS) {
             Coordinate coordinate = getNextCoordinate(
@@ -58,7 +60,18 @@ public class DFSBacktrace {
             }
         }
 
-        path.remove(path.size() - 1);
         return false;
+    }
+
+    private int countAvailableSpots(Grid grid){
+        int randomCounter =0;
+        for(String[] a: grid.grid){
+            for(String b:a){
+                if(b.equals("O")||b.equals("C")){
+                    randomCounter++;
+                }
+            }
+        }
+        return randomCounter;
     }
 }
