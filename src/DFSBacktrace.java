@@ -5,20 +5,20 @@ import java.util.List;
 public class DFSBacktrace {
 
     private static int[][] DIRECTIONS = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-    private int counter =0;
+    private int counter = 0;
 
 
     private Coordinate getNextCoordinate(int row, int col, int i, int j) {
         return new Coordinate(row + i, col + j);
     }
 
-    public void printPath(List<Coordinate> list){
-        for(Coordinate a: list){
+    public void printPath(List<Coordinate> list) {
+        for (Coordinate a : list) {
             System.out.println(a.toString());
         }
     }
 
-    public void printGrid(Grid grid){
+    public void printGrid(Grid grid) {
         grid.printTest();
     }
 
@@ -28,7 +28,7 @@ public class DFSBacktrace {
         List<Coordinate> path = new ArrayList<>();
         if (explore(grid, 0, 0, path)) {
             System.out.println("Returning path: ");
-            System.out.println("Iterations done: "+counter);
+            System.out.println("Iterations done: " + counter);
 //            printPath(path);
             System.out.println(path.size());
 //            System.out.println(countAvailableSpots(grid));
@@ -63,15 +63,16 @@ public class DFSBacktrace {
         return false;
     }
 
-    private int countAvailableSpots(Grid grid){
-        int randomCounter =0;
-        for(String[] a: grid.grid){
-            for(String b:a){
-                if(b.equals("O")||b.equals("C")){
+    private int countAvailableSpots(Grid grid) {
+        int randomCounter = 0;
+        for (String[] a : grid.grid) {
+            for (String b : a) {
+                if (b.equals("O") || b.equals("C")) {
                     randomCounter++;
                 }
             }
         }
         return randomCounter;
     }
+
 }

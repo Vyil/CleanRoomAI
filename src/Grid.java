@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Grid {
+public class Grid{
 
     String[][] grid = new String[20][20];
 
