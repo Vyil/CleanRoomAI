@@ -10,6 +10,7 @@ public class BFS {
     private int counter = 0;
 
     public List<Coordinate> solve(Grid grid) {
+        long startStopwatch = System.currentTimeMillis();
         LinkedList<Coordinate> nextToVisit = new LinkedList<>();
         Coordinate start = new Coordinate(0,0);
         nextToVisit.add(start);
@@ -39,7 +40,9 @@ public class BFS {
             }
         }
         grid.printTest();
-        System.out.println("Iterated : "+counter+" times");
+        long stopStopwatch = System.currentTimeMillis();
+        long finish = stopStopwatch - startStopwatch;
+        System.out.println("Iterated : "+counter+" times and took: "+finish /1000+" seconds");
         return Collections.emptyList();
     }
 

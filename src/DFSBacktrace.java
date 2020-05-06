@@ -24,15 +24,16 @@ public class DFSBacktrace {
 
 
     public List<Coordinate> solve(Grid grid) {
+        long startStopwatch = System.currentTimeMillis();
 
         List<Coordinate> path = new ArrayList<>();
         if (explore(grid, 0, 0, path)) {
-            System.out.println("Returning path: ");
-            System.out.println("Iterations done: " + counter);
 //            printPath(path);
             System.out.println(path.size());
-//            System.out.println(countAvailableSpots(grid));
             printGrid(grid);
+            long stopStopwatch = System.currentTimeMillis();
+            long finish = stopStopwatch - startStopwatch;
+            System.out.println("Iterated : "+counter+" times and took: "+finish /1000+" seconds");
             return path;
         }
         return Collections.emptyList();
@@ -69,18 +70,6 @@ public class DFSBacktrace {
         }
 
         return false;
-    }
-
-    private int countAvailableSpots(Grid grid) {
-        int randomCounter = 0;
-        for (String[] a : grid.grid) {
-            for (String b : a) {
-                if (b.equals("O") || b.equals("C")) {
-                    randomCounter++;
-                }
-            }
-        }
-        return randomCounter;
     }
 
 }
