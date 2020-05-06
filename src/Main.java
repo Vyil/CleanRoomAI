@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-//        JFrame frame = new JFrame();
+        JFrame frame = new JFrame();
 //        JPanel centeredBoardUI = new JPanel(new FlowLayout(FlowLayout.CENTER));
 //        frame.add(centeredBoardUI);
 //        centeredBoardUI.add(new testPane());
@@ -18,6 +18,11 @@ public class Main {
         Grid grid = new Grid();
         grid.fillArray();
         grid.setUpRoom();
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(grid);
+        frame.pack();
+        frame.setVisible(true);
 //	grid.printTest();
 
 //        DFSBacktrace backtrace = new DFSBacktrace();

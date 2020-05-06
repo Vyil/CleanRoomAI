@@ -1,8 +1,11 @@
+import javax.swing.*;
+import java.awt.*;
 import java.util.Arrays;
 
-public class Grid{
+public class Grid extends JPanel {
 
     String[][] grid = new String[20][20];
+    private static final int SIZE = 20;
 
     public Grid(){
     }
@@ -82,5 +85,36 @@ public class Grid{
 
     public String[][] getGrid(){
         return grid;
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(400,400);
+    }
+
+    @Override
+    public void paintComponent(Graphics g) //override paintComponent not paint
+    {
+        super.paintComponent(g);
+        for (int row = 0; row < grid.length; row++)
+        {
+            for (int col = 0; col < grid[0].length; col++)
+            {
+                g.drawRect(SIZE*col, SIZE * row , SIZE, SIZE);
+                if(grid[row][col].equals("X"))
+                {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(SIZE*col, SIZE * row , SIZE, SIZE);
+                }
+                if(grid[row][col].equals("C")){
+                    g.setColor(Color.RED);
+                    g.fillRect(SIZE*col, SIZE * row , SIZE, SIZE);
+                }
+            }
+        }
+    }
+
+    public void repaintRythm(){
+        repaint();
     }
 }

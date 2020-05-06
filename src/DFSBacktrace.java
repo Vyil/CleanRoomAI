@@ -39,6 +39,14 @@ public class DFSBacktrace {
     }
 
     private boolean explore(Grid grid, int y, int x, List<Coordinate> path) {
+        try{
+            Thread.sleep(10);
+        } catch (InterruptedException e){
+            System.out.println(e);
+        }
+
+        grid.repaint();
+
         if (grid.roomIsCleaned()) {
             System.out.println("Room is cleaned");
             return true;
